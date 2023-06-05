@@ -11,3 +11,7 @@ namespace BloodDonorAPI
         public string? Summary { get; set; }
     }
 }
+
+/*
+ * add data layer, logic layer, APIs, API gateway and connection between eachother
+ */

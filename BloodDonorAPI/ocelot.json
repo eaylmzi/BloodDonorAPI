@@ -1,0 +1,28 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/Five/five",
+      "DownstreamPathTemplate": "/api/Five/five",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5027
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/Four/four",
+      "DownstreamPathTemplate": "/api/Four/four",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5169
+        }
+      ]
+    }
+  ]
+}
