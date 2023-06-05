@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BloodDonorApiGateway.Models
+namespace BloodBankAPI.Models
 {
-    public partial class BloodDonorDBContext : DbContext
+    public partial class LocationDBContext : DbContext
     {
-        public BloodDonorDBContext()
+        public LocationDBContext()
         {
         }
 
-        public BloodDonorDBContext(DbContextOptions<BloodDonorDBContext> options)
+        public LocationDBContext(DbContextOptions<LocationDBContext> options)
             : base(options)
         {
         }
@@ -24,8 +24,7 @@ namespace BloodDonorApiGateway.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseSqlServer("Server=.\\SQLSERVER;Database=BloodDonorDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=tcp:blood-bank.database.windows.net,1433;Initial Catalog=LocationDB;Persist Security Info=False;User ID=emreyilmaz;Password=Blooddonor123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
