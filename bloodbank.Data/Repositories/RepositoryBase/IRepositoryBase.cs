@@ -8,6 +8,7 @@ namespace bloodbank.Data.Repository.RepositoryBase
 {
     public interface IRepositoryBase<T> where T : class
     {
+        
         public bool Add(T entity);        
         public int AddAndGetId(T entity);
         public bool Delete(int id);
@@ -20,6 +21,7 @@ namespace bloodbank.Data.Repository.RepositoryBase
         public T? GetSingle(int number);
         public T? GetSingleByMethod(Func<T, bool> method);
         public T? GetSingleByMethod(Func<T, bool> method, Func<T, bool> method2);
+        
 
     }
 }

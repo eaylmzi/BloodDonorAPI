@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BloodBankAPI.Models
+namespace bloodbank.Data.Models.dto.Hospital.dto
 {
-    public partial class Hospital
+    public class HospitalDto
     {
-        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public int APlusBloodUnit { get; set; }
         public int AMinusBloodUnit { get; set; }
@@ -15,6 +17,5 @@ namespace BloodBankAPI.Models
         public int AbMinusBloodUnit { get; set; }
         public int ZeroPlusBloodUnit { get; set; }
         public int ZeroMinusBloodUnit { get; set; }
-        public int GeopointId { get; set; }
     }
 }

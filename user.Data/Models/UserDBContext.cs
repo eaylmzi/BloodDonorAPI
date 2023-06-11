@@ -22,7 +22,8 @@ namespace BloodBankAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:blood-bank.database.windows.net,1433;Initial Catalog=UserDB;Persist Security Info=False;User ID=emreyilmaz;Password=Blooddonor123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=tcp:bloodbank.database.windows.net,1433;Initial Catalog=UserDB;Persist Security Info=False;User ID=emreyilmaz;Password=Bloodbank123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -30,38 +31,30 @@ namespace BloodBankAPI.Models
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("user");
 
+                entity.Property(e => e.Id).HasColumnName("id");
+
                 entity.Property(e => e.Email)
-                    .HasMaxLength(100)
+                    .HasMaxLength(50)
                     .HasColumnName("email");
 
                 entity.Property(e => e.HospitalId).HasColumnName("hospital_id");
-
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("id");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .HasColumnName("name");
 
-                entity.Property(e => e.PasswordHash)
-                    .HasMaxLength(512)
-                    .HasColumnName("password_hash");
+                entity.Property(e => e.PasswordHash).HasColumnName("password_hash");
 
-                entity.Property(e => e.PasswordSalt)
-                    .HasMaxLength(512)
-                    .HasColumnName("password_salt");
+                entity.Property(e => e.PasswordSalt).HasColumnName("password_salt");
 
                 entity.Property(e => e.Surname)
                     .HasMaxLength(50)
                     .HasColumnName("surname");
 
                 entity.Property(e => e.Token)
-                    .HasMaxLength(2048)
+                    .HasMaxLength(1024)
                     .HasColumnName("token");
             });
 

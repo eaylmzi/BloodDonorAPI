@@ -9,7 +9,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace bloodbank.Data.Repositories.Hospitals
 {
-    public class HospitalRepository: RepositoryBase<Hospital> , IHospitalRepository
+    public class HospitalRepository: RepositoryBase<Hospital> , IHospitalRepository 
     {
     }
 }

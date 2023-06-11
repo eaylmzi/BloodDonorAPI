@@ -24,7 +24,8 @@ namespace BloodBankAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:blood-bank.database.windows.net,1433;Initial Catalog=LocationDB;Persist Security Info=False;User ID=emreyilmaz;Password=Blooddonor123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=tcp:bloodbank.database.windows.net,1433;Initial Catalog=LocationDB;Persist Security Info=False;User ID=emreyilmaz;Password=Bloodbank123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -32,12 +33,10 @@ namespace BloodBankAPI.Models
         {
             modelBuilder.Entity<City>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("city");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
+                    .ValueGeneratedNever()
                     .HasColumnName("id");
 
                 entity.Property(e => e.Name)
@@ -47,12 +46,10 @@ namespace BloodBankAPI.Models
 
             modelBuilder.Entity<Geopoint>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("geopoint");
 
                 entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
+                    .ValueGeneratedNever()
                     .HasColumnName("id");
 
                 entity.Property(e => e.Latitude).HasColumnName("latitude");
@@ -62,13 +59,9 @@ namespace BloodBankAPI.Models
 
             modelBuilder.Entity<Town>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("town");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/api/Five/five",
+      "UpstreamPathTemplate": "/five",
       "DownstreamPathTemplate": "/api/Five/five",
       "UpstreamHttpMethod": [ "Post", "Get" ],
       "DownstreamScheme": "http",

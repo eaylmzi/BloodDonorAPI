@@ -12,6 +12,7 @@ namespace bloodbank.Data.Repository.RepositoryBase
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
+        
         BloodBankDBContext _context = new BloodBankDBContext();
 
         private DbSet<T> query { get; set; }
@@ -194,6 +195,7 @@ namespace bloodbank.Data.Repository.RepositoryBase
                 return null;
             }
         }
+        
     }
 
 }

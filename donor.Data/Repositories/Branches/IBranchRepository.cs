@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace donor.Data.Repositories.Branches
 {
-    public interface IBranchRepositorycs : IRepositoryBase<Branch>
+    public interface IBranchRepository : IRepositoryBase<Branch>
     {
     }
 }

@@ -22,7 +22,8 @@ namespace BloodBankAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=tcp:blood-bank.database.windows.net,1433;Initial Catalog=BloodBankDB;Persist Security Info=False;User ID=emreyilmaz;Password=Blooddonor123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
+                optionsBuilder.UseSqlServer("Server=tcp:bloodbank.database.windows.net,1433;Initial Catalog=BloodBankDB;Persist Security Info=False;User ID=emreyilmaz;Password=Bloodbank123*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -30,9 +31,9 @@ namespace BloodBankAPI.Models
         {
             modelBuilder.Entity<Hospital>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("hospital");
+
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.AMinusBloodUnit).HasColumnName("a_minus_blood_unit");
 
@@ -46,9 +47,7 @@ namespace BloodBankAPI.Models
 
                 entity.Property(e => e.BPlusBloodUnit).HasColumnName("b_plus_blood_unit");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("id");
+                entity.Property(e => e.GeopointId).HasColumnName("geopoint_id");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

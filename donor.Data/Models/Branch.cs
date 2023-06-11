@@ -6,8 +6,8 @@ namespace BloodBankAPI.Models
     public partial class Branch
     {
         public int Id { get; set; }
-        public int CityId { get; set; }
-        public int TownId { get; set; }
+        public int City { get; set; }
+        public int Town { get; set; }
         public int APlusBloodUnit { get; set; }
         public int AMinusBloodUnit { get; set; }
         public int BPlusBloodUnit { get; set; }
