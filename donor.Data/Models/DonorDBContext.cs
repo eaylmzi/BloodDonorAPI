@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BloodBankAPI.Models
+namespace donor.Data.Models
 {
     public partial class DonorDBContext : DbContext
     {

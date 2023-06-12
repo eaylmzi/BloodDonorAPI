@@ -1,4 +1,4 @@
-﻿using BloodBankAPI.Models;
+﻿using bloodbank.Logic.Models;
 using donor.Data.Repositories.DonationHistories;
 using donor.Data.Repositories.Donors;
 using System;

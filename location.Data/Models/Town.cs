@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BloodBankAPI.Models
+namespace location.Data.Models
 {
     public partial class Town
     {

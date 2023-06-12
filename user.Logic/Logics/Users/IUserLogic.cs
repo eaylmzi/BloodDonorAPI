@@ -1,9 +1,10 @@
-﻿using BloodBankAPI.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using user.Data.Models;
 
 namespace user.Logic.Logics.Users
 {
@@ -18,6 +19,7 @@ namespace user.Logic.Logics.Users
         public bool DeleteList(int id);
         public User? GetSingle(int id);
         public User? GetSingleByMethod(int id);
+        public User? GetSingleByMethod(string email);
         //public Flight? GetSingleByMethods(int id,string name);
         public List<User>? GetList(int id);
         public Task<User?> UpdateAsync(int id, User updatedEntity);

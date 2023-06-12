@@ -1,4 +1,5 @@
 using donor.Data.Repositories.Branches;
+using DonorAPI.Services.Cipher;
 using DonorAPI.Services.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -35,6 +36,8 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+//Services dependencies
+builder.Services.AddScoped<ICipherService, CipherService>();
 // Add services to the container.
 
 builder.Services.AddControllers();

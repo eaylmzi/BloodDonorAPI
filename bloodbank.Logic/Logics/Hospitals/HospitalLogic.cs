@@ -1,6 +1,6 @@
 ﻿using bloodbank.Data;
+using bloodbank.Data.Models;
 using bloodbank.Data.Repositories.Hospitals;
-using BloodBankAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

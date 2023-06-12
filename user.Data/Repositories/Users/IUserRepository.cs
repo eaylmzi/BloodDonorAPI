@@ -1,14 +1,14 @@
 ﻿using bloodbank.Data.Repository.RepositoryBase;
-using BloodBankAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using user.Data.Models;
 
 namespace user.Data.Repositories.Users
 {
-    public interface IUserRepository : IRepositoryBase<User>
-    {
+    public interface IUserRepository : IRepositoryBase<User> 
+    { 
     }
 }

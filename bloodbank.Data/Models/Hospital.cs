@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BloodBankAPI.Models
+namespace bloodbank.Data.Models
 {
     public partial class Hospital
     {

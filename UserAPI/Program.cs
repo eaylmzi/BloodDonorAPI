@@ -3,11 +3,17 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
+using user.Data.Repositories.Users;
+using user.Logic.Logics.Users;
+using UserAPI.Services.Cipher;
 using UserAPI.Services.Jwt;
+using UserAPI.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 //Mapper Service
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+//Cipher service
+builder.Services.AddScoped<ICipherService, CipherService>();
 //JWT
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -33,6 +39,11 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+//Services dependencies
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserLogic, UserLogic>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 // Add services to the container.
 
 builder.Services.AddControllers();

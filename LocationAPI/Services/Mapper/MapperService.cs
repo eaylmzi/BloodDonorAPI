@@ -9,3 +9,4 @@ namespace LocationAPI.Services.Mapper
 
         }
     }
+}

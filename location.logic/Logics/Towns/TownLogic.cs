@@ -1,4 +1,4 @@
-﻿using BloodBankAPI.Models;
+﻿using bloodbank.Logic.Models;
 using location.Data.Repositories.Towns;
 using System;
 using System.Collections.Generic;

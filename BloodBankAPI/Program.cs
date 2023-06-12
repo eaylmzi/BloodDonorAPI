@@ -1,7 +1,7 @@
 using bloodbank.Data;
 using bloodbank.Data.Repositories.Hospitals;
 using bloodbank.Logic.Logics.Hospitals;
-using BloodBankAPI.Models;
+using BloodBankAPI.Services.Cipher;
 using BloodBankAPI.Services.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -37,6 +37,8 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+//Services dependencies
+builder.Services.AddScoped<ICipherService, CipherService>();
 // Add services to the container.
 builder.Services.AddScoped<IHospitalRepository, HospitalRepository>();
 builder.Services.AddScoped<IHospitalLogic, HospitalLogic>();

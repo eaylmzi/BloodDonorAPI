@@ -7,9 +7,9 @@ using AutoMapper;
 using bloodbank.Logic.Logics.Hospitals;
 using bloodbank.Data.Models.dto.Hospital.dto;
 using bloodbank.Data;
-using BloodBankAPI.Models;
+using bloodbank.Data.Models;
 
-namespace BloodBankAPI.Controllers
+namespace bloodbank.Logic.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Numerics;
 using bloodbank.Data.Models.dto.Hospital.dto;
 using bloodbank.Data;
-using BloodBankAPI.Models;
+using bloodbank.Data.Models;
 
 namespace BloodBankAPI.Services.Mapper
 {

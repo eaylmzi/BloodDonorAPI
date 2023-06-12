@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace BloodBankAPI.Controllers
+namespace bloodbank.Logic.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]

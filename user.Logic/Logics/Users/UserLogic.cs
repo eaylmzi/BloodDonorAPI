@@ -1,9 +1,10 @@
-﻿using BloodBankAPI.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using user.Data.Models;
 using user.Data.Repositories.Users;
 
 namespace user.Logic.Logics.Users
@@ -64,16 +65,22 @@ namespace user.Logic.Logics.Users
             User? result = _repository.GetSingleByMethod(filter);
             return result;
         }
+        public User? GetSingleByMethod(string email)
+        {
+            Func<User, bool> filter = filter => filter.Email == email;
+            User? result = _repository.GetSingleByMethod(filter);
+            return result;
+        }
         /*
-     * istediğin gibi Func parametrelerini değiştirebilirsin
-    public Flight? GetSingleByMethods(int id,string name)
-    {
-        Func<Flight, bool> filter = filter => filter.Id == id;
-        Func<Flight, bool> filter = filter => filter.Name == name;
-        Flight result = _repository.GetSingleByMethod(filter);
-        return result;
-    }
-    */
+        public User? GetSingleByMethods(string email, string name)
+        {
+            Func<User, bool> filter = filter => filter.Id == id;
+            Func<User, bool> filter = filter => filter.Name == name;
+            User result = _repository.GetSingleByMethod(filter);
+            return result;
+        }
+        */
+
         public List<User>? GetList(int id)
         {
             Func<User, bool> filter = filter => filter.Id == id;

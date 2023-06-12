@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BloodBankAPI.Models
+namespace location.Data.Models
 {
     public partial class LocationDBContext : DbContext
     {
