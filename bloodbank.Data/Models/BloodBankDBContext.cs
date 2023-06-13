@@ -17,6 +17,7 @@ namespace bloodbank.Data.Models
         }
 
         public virtual DbSet<Hospital> Hospitals { get; set; } = null!;
+        public virtual DbSet<BloodRequest> BloodRequests { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -56,6 +57,18 @@ namespace bloodbank.Data.Models
                 entity.Property(e => e.ZeroMinusBloodUnit).HasColumnName("zero_minus_blood_unit");
 
                 entity.Property(e => e.ZeroPlusBloodUnit).HasColumnName("zero_plus_blood_unit");
+            });
+            modelBuilder.Entity<BloodRequest>(entity =>
+            {
+                entity.ToTable("blood_request");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.BloodCount).HasColumnName("blood_count");
+                entity.Property(e => e.BloodType).HasColumnName("blood_type");
+
+                entity.Property(e => e.DurationTime)
+                    .HasColumnName("duration_time");
+
             });
 
             OnModelCreatingPartial(modelBuilder);
