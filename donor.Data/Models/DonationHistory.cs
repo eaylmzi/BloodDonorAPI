@@ -8,6 +8,6 @@ namespace donor.Data.Models
         public int Id { get; set; }
         public int DonorId { get; set; }
         public int TupleCount { get; set; }
-        public byte[] DonationTime { get; set; } = null!;
+        public DateTime DonationTime { get; set; } 
     }
 }

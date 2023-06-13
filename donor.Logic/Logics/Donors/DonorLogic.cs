@@ -1,4 +1,4 @@
-﻿using bloodbank.Logic.Models;
+﻿using donor.Data.Models;
 using donor.Data.Repositories.DonationHistories;
 using donor.Data.Repositories.Donors;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace donor.Logic.Logics.Donors
 {
-    public class DonorLogic
+    public class DonorLogic : IDonorLogic
     {
         private IDonorRepository _repository;
         public DonorLogic(IDonorRepository repository)
@@ -64,16 +64,16 @@ namespace donor.Logic.Logics.Donors
             Donor? result = _repository.GetSingleByMethod(filter);
             return result;
         }
-        /*
-     * istediğin gibi Func parametrelerini değiştirebilirsin
-    public Flight? GetSingleByMethods(int id,string name)
-    {
-        Func<Flight, bool> filter = filter => filter.Id == id;
-        Func<Flight, bool> filter = filter => filter.Name == name;
-        Flight result = _repository.GetSingleByMethod(filter);
-        return result;
-    }
-    */
+
+
+
+        public Donor? GetSingleByMethods(string name, string surname)
+        {
+            Func<Donor, bool> filter = filter => filter.Name == name;
+            Func<Donor, bool> filter2 = filter => filter.Surname == surname;
+            Donor? result = _repository.GetSingleByMethod(filter, filter2);
+            return result;
+        }
         public List<Donor>? GetList(int id)
         {
             Func<Donor, bool> filter = filter => filter.Id == id;

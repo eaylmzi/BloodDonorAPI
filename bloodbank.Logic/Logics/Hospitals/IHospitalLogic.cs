@@ -19,6 +19,7 @@ namespace bloodbank.Logic.Logics.Hospitals
         public bool DeleteList(int id);
         public Hospital? GetSingle(int id);
         public Hospital? GetSingleByMethod(int id);
+        public Hospital? GetSingleByMethod(string name);
         //public Flight? GetSingleByMethods(int id,string name);
         public List<Hospital>? GetList(int id);
         public Task<Hospital?> UpdateAsync(int id, Hospital updatedEntity);

@@ -67,8 +67,6 @@ namespace donor.Data.Models
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.DonationTime)
-                    .IsRowVersion()
-                    .IsConcurrencyToken()
                     .HasColumnName("donation_time");
 
                 entity.Property(e => e.DonorId).HasColumnName("donor_id");

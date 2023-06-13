@@ -66,6 +66,12 @@ namespace bloodbank.Logic.Logics.Hospitals
             Hospital? result = _repository.GetSingleByMethod(filter);
             return result;
         }
+        public Hospital? GetSingleByMethod(string name)
+        {
+            Func<Hospital, bool> filter = filter => filter.Name == name;
+            Hospital? result = _repository.GetSingleByMethod(filter);
+            return result;
+        }
         /*
      * istediğin gibi Func parametrelerini değiştirebilirsin
     public Flight? GetSingleByMethods(int id,string name)
@@ -76,7 +82,7 @@ namespace bloodbank.Logic.Logics.Hospitals
         return result;
     }
     */
-        
+
         public List<Hospital>? GetList(int id)
         {
             Func<Hospital, bool> filter = filter => filter.Id == id;

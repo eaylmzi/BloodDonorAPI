@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
     .AddJsonFile("ocelotuserapi.json", optional: false, reloadOnChange: true)
-
+    .AddJsonFile("ocelotdonorapi.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 builder.Services.AddOcelot(builder.Configuration);
 
@@ -31,13 +31,13 @@ var app = builder.Build();
 await app.UseOcelot();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 

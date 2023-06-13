@@ -1,5 +1,12 @@
+using location.Data.Repositories.Cities;
+using location.Data.Repositories.Geopoints;
+using location.Data.Repositories.Towns;
+using location.logic.Logics.Cities;
+using location.logic.Logics.Geopoints;
+using location.logic.Logics.Towns;
 using LocationAPI.Services.Cipher;
 using LocationAPI.Services.Jwt;
+using LocationAPI.Services.Locations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -36,6 +43,13 @@ builder.Services.AddSwaggerGen(options =>
 });
 //Services dependencies
 builder.Services.AddScoped<ICipherService, CipherService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddScoped<ITownRepository, TownRepository>();
+builder.Services.AddScoped<ITownLogic, TownLogic>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ICityLogic, CityLogic>();
+builder.Services.AddScoped<IGeopointRepository, GeopointRepository>();
+builder.Services.AddScoped<IGeopointLogic, GeopointLogic>();
 // Add services to the container.
 
 builder.Services.AddControllers();

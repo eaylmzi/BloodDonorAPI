@@ -10,8 +10,9 @@ namespace UserAPI.Services.Mapper
     {
         public MapperService()
         {
-            CreateMap<UserRegisterDto, User>();
-           
+            CreateMap<BranchRegisterDto, User>();
+            CreateMap<HospitalRegisterDto, User>();
+
         }
     }
 }

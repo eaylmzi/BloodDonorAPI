@@ -10,6 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\bloodbank.Logic\bloodbank.Logic.csproj" />
+		<ProjectReference Include="..\donor.Data\donor.Data.csproj" />
+		<ProjectReference Include="..\donor.Logic\donor.Logic.csproj" />
+		<ProjectReference Include="..\location.Data\location.Data.csproj" />
+		<ProjectReference Include="..\location.logic\location.logic.csproj" />
 		<ProjectReference Include="..\user.Logic\user.Logic.csproj" />
 	</ItemGroup>
 

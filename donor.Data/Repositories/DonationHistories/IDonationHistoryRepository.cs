@@ -1,5 +1,5 @@
 ﻿using bloodbank.Data.Repository.RepositoryBase;
-using bloodbank.Logic.Models;
+using donor.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

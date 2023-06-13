@@ -1,4 +1,4 @@
-﻿using bloodbank.Logic.Models;
+﻿using location.Data.Models;
 using location.Data.Repositories.Cities;
 using location.Data.Repositories.Geopoints;
 using System;

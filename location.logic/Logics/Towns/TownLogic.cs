@@ -1,4 +1,4 @@
-﻿using bloodbank.Logic.Models;
+﻿using location.Data.Models;
 using location.Data.Repositories.Towns;
 using System;
 using System.Collections.Generic;
@@ -61,6 +61,12 @@ namespace location.logic.Logics.Towns
         public Town? GetSingleByMethod(int id)
         {
             Func<Town, bool> filter = filter => filter.Id == id;
+            Town? result = _repository.GetSingleByMethod(filter);
+            return result;
+        }
+        public Town? GetSingleByMethod(string name)
+        {
+            Func<Town, bool> filter = filter => filter.Name == name;
             Town? result = _repository.GetSingleByMethod(filter);
             return result;
         }

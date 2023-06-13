@@ -1,5 +1,5 @@
 ﻿using bloodbank.Data.Repository.RepositoryBase;
-using bloodbank.Logic.Models;
+using donor.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace donor.Data.Repositories.Donors
 {
-    public class DonorRepository : RepositoryBase<Donor>, IRepositoryBase<Donor>
+    public class DonorRepository : RepositoryBase<Donor>, IDonorRepository
     {
     }
 }

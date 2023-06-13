@@ -1,0 +1,52 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/User/Yey",
+      "DownstreamPathTemplate": "/api/User/Yey",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5169
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/Donor/Add",
+      "DownstreamPathTemplate": "/api/Donor/Add",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5169
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/Donor/Find",
+      "DownstreamPathTemplate": "/api/Donor/Find",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5169
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/Donor/Donate",
+      "DownstreamPathTemplate": "/api/Donor/Donate",
+      "UpstreamHttpMethod": [ "Post", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5169
+        }
+      ]
+    }
+  ]
+}

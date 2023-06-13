@@ -1,4 +1,5 @@
-﻿using bloodbank.Logic.Models;
+﻿
+using donor.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace donor.Logic.Logics.Donors
         public bool DeleteList(int id);
         public Donor? GetSingle(int id);
         public Donor? GetSingleByMethod(int id);
-        //public Flight? GetSingleByMethods(int id,string name);
+        public Donor? GetSingleByMethods(string name, string surname);
         public List<Donor>? GetList(int id);
         public Task<Donor?> UpdateAsync(int id, Donor updatedEntity);
         public Task<Donor?> UpdateAsync(Donor entity, Donor updatedEntity);

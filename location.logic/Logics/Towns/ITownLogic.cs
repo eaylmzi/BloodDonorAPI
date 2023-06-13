@@ -1,4 +1,4 @@
-﻿using bloodbank.Logic.Models;
+﻿using location.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,8 @@ namespace location.logic.Logics.Towns
         public int AddAndGetId(Town entity);
         public bool Delete(int id);
         public bool DeleteSingleByMethod(int id);
+        public Town? GetSingleByMethod(string name);
+
 
         // public bool DeleteSingleByMethods(int id,string name);
         public bool DeleteList(int id);

@@ -39,7 +39,7 @@ namespace user.Data.Models
                     .HasMaxLength(50)
                     .HasColumnName("email");
 
-                entity.Property(e => e.HospitalId).HasColumnName("hospital_id");
+                entity.Property(e => e.HealthCenterId).HasColumnName("health_center_id");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

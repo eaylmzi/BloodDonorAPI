@@ -1,4 +1,4 @@
-﻿using bloodbank.Logic.Models;
+﻿using location.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

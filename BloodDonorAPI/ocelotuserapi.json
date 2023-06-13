@@ -13,9 +13,9 @@
       ]
     },
     {
-      "UpstreamPathTemplate": "/api/User/Register",
-      "DownstreamPathTemplate": "/api/User/Register",
-      "UpstreamHttpMethod": [ "Post"],
+      "UpstreamPathTemplate": "/api/User/RegisterToBranch",
+      "DownstreamPathTemplate": "/api/User/RegisterToBranch",
+      "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -25,9 +25,33 @@
       ]
     },
     {
-      "UpstreamPathTemplate": "/api/User/Login",
-      "DownstreamPathTemplate": "/api/User/Login",
-      "UpstreamHttpMethod": [ "Post"],
+      "UpstreamPathTemplate": "/api/User/RegisterToHospital",
+      "DownstreamPathTemplate": "/api/User/RegisterToHospital",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5156
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/LoginToBranch",
+      "DownstreamPathTemplate": "/api/User/LoginToBranch",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5156
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/LoginToHospital",
+      "DownstreamPathTemplate": "/api/User/LoginToHospital",
+      "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

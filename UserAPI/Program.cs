@@ -1,3 +1,11 @@
+using bloodbank.Data.Repositories.Hospitals;
+using bloodbank.Logic.Logics.Hospitals;
+using donor.Data.Repositories.Branches;
+using donor.Logic.Logics.Brances;
+using location.Data.Repositories.Cities;
+using location.Data.Repositories.Towns;
+using location.logic.Logics.Cities;
+using location.logic.Logics.Towns;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -40,6 +48,14 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 //Services dependencies
+builder.Services.AddScoped<ICityRepository , CityRepository>();
+builder.Services.AddScoped<ICityLogic, CityLogic>();
+builder.Services.AddScoped<ITownRepository, TownRepository>();
+builder.Services.AddScoped<ITownLogic, TownLogic>();
+builder.Services.AddScoped<IHospitalRepository, HospitalRepository>();
+builder.Services.AddScoped<IHospitalLogic, HospitalLogic>();
+builder.Services.AddScoped<IBranchRepository, BranchRepository>();
+builder.Services.AddScoped<IBranchLogic, BranchLogic>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -54,14 +70,13 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
+
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

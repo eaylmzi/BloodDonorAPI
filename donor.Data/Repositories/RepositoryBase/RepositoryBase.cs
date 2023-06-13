@@ -1,5 +1,5 @@
 ﻿using AutoMapper.Execution;
-using bloodbank.Logic.Models;
+using donor.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

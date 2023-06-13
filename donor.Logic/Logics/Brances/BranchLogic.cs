@@ -1,4 +1,4 @@
-﻿using bloodbank.Logic.Models;
+﻿using donor.Data.Models;
 using donor.Data.Repositories.Branches;
 using System;
 using System.Collections.Generic;
@@ -63,16 +63,18 @@ namespace donor.Logic.Logics.Brances
             Branch? result = _repository.GetSingleByMethod(filter);
             return result;
         }
-        /*
-     * istediğin gibi Func parametrelerini değiştirebilirsin
-    public Flight? GetSingleByMethods(int id,string name)
-    {
-        Func<Flight, bool> filter = filter => filter.Id == id;
-        Func<Flight, bool> filter = filter => filter.Name == name;
-        Flight result = _repository.GetSingleByMethod(filter);
-        return result;
-    }
-    */
+        public Branch? GetSingleByMethods(int city, int town)
+        {
+            Func<Branch, bool> filter = filter => filter.City == city;
+            Func<Branch, bool> filter2 = filter => filter.Town == town;
+            Branch? result = _repository.GetSingleByMethod(filter,filter2);
+            return result;
+        }
+
+
+
+
+
         public List<Branch>? GetList(int id)
         {
             Func<Branch, bool> filter = filter => filter.Id == id;
@@ -92,6 +94,11 @@ namespace donor.Logic.Logics.Brances
         {
             Branch? updateResult = await _repository.UpdateAsync(entity, updatedEntity);
             return updateResult;
+        }
+        public bool CheckExistence(int branchId)
+        {
+            bool isExist = _repository.CheckBranchIfExists(branchId);
+            return isExist;
         }
     }
 }

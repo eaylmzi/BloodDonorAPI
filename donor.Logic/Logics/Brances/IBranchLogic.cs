@@ -1,4 +1,5 @@
-﻿using bloodbank.Logic.Models;
+﻿
+using donor.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,10 @@ namespace donor.Logic.Logics.Brances
         public bool DeleteList(int id);
         public Branch? GetSingle(int id);
         public Branch? GetSingleByMethod(int id);
-        // public Flight? GetSingleByMethods(int id, string name);
+        public Branch? GetSingleByMethods(int city, int town);
         public List<Branch>? GetList(int id);
         public Task<Branch?> UpdateAsync(int id, Branch updatedEntity);
         public Task<Branch?> UpdateAsync(Branch entity, Branch updatedEntity);
+        public bool CheckExistence(int branchId);
     }
 }
