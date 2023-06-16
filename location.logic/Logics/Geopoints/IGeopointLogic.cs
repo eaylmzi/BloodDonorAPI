@@ -18,6 +18,7 @@ namespace location.logic.Logics.Geopoints
         public bool DeleteList(int id);
         public Geopoint? GetSingle(int id);
         public Geopoint? GetSingleByMethod(int id);
+        public Geopoint? GetSingleByMethods(double lat, double longitude);
         //public Flight? GetSingleByMethods(int id,string name);
         public List<Geopoint>? GetList(int id);
         public Task<Geopoint?> UpdateAsync(int id, Geopoint updatedEntity);

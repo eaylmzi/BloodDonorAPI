@@ -2,6 +2,7 @@ using AutoMapper;
 using bloodbank.Data.Models;
 using bloodbank.Logic.Logics.Hospitals;
 using donor.Data.Models;
+using donor.Data.Models.dto.Branch.dto;
 using donor.Logic.Logics.Brances;
 using location.Data.Models;
 using location.Data.Repositories.Cities;
@@ -21,7 +22,8 @@ using UserAPI.Services.Users;
 namespace UserAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
+    [ApiVersion("1")]
     public class UserController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -136,7 +138,7 @@ namespace UserAPI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult<Response<UserAndBranchDto>> LoginToBranch([FromBody] UserLoginDto userLoginDto)
+        public ActionResult<Response<UserAndBranchLocDto>> LoginToBranch([FromBody] UserLoginDto userLoginDto)
         {
             try
             {
@@ -144,24 +146,39 @@ namespace UserAPI.Controllers
                 User? user = _userLogic.GetSingleByMethod(userLoginDto.Email);
                 if (user == null)
                 {
-                    return Ok(new Response<UserAndBranchDto> { Message = Error.USER_NOT_FOUND, Data = new UserAndBranchDto(), Progress = false });
+                    return Ok(new Response<UserAndBranchLocDto> { Message = Error.USER_NOT_FOUND, Data = new UserAndBranchLocDto(), Progress = false });
                 }
 
                 //Verify password
                 bool isVerified = _cipherService.VerifyPasswordHash(user.PasswordHash, user.PasswordSalt, userLoginDto.Password);
                 if (!isVerified)
                 {
-                    return Ok(new Response<UserAndBranchDto> { Message = Error.USER_NOT_FOUND, Data = new UserAndBranchDto(), Progress = false });
+                    return Ok(new Response<UserAndBranchLocDto> { Message = Error.USER_NOT_FOUND, Data = new UserAndBranchLocDto(), Progress = false });
                 }
 
                 Branch? branch = _branchLogic.GetSingle(user.HealthCenterId);
                 if(branch == null)
                 {
-                    return Ok(new Response<UserAndBranchDto> { Message = Error.BRANCH_NOT_FOUND, Data = new UserAndBranchDto(), Progress = false });
+                    return Ok(new Response<UserAndBranchLocDto> { Message = Error.BRANCH_NOT_FOUND, Data = new UserAndBranchLocDto(), Progress = false });
                 }
 
+                BranchDto branchDto = new BranchDto()
+                {
+                    Id = branch.Id,
+                    City = _cityLogic.GetSingle(branch.City).Name,
+                    Town = _townLogic.GetSingle(branch.Town).Name,
+                    AbMinusBloodUnit = branch.AbMinusBloodUnit,
+                    AbPlusBloodUnit = branch.AbPlusBloodUnit,
+                    APlusBloodUnit = branch.APlusBloodUnit,
+                    AMinusBloodUnit = branch.AMinusBloodUnit,
+                    BMinusBloodUnit= branch.BMinusBloodUnit,
+                    BPlusBloodUnit= branch.BPlusBloodUnit,
+                    ZeroMinusBloodUnit = branch.ZeroMinusBloodUnit,
+                    ZeroPlusBloodUnit = branch.ZeroPlusBloodUnit,
+                    GeopointId = branch.GeopointId,
+                };
                 //Result
-                return Ok(new Response<UserAndBranchDto> { Message = Success.USER_LOGIN_SUCCESSFULLY, Data = new UserAndBranchDto(){ User =user, Branch = branch}, Progress = true });
+                return Ok(new Response<UserAndBranchLocDto> { Message = Success.USER_LOGIN_SUCCESSFULLY, Data = new UserAndBranchLocDto(){ User =user, Branch = branchDto }, Progress = true });
             }
             catch (Exception ex)
             {
@@ -193,6 +210,7 @@ namespace UserAPI.Controllers
                     return Ok(new Response<UserAndHospitalDto> { Message = Error.HOSPITAL_NOT_FOUND, Data = new UserAndHospitalDto(), Progress = false });
                 }
 
+
                 //Result
                 return Ok(new Response<UserAndHospitalDto> { Message = Success.USER_LOGIN_SUCCESSFULLY, Data = new UserAndHospitalDto() { User = user, Hospital = hospital }, Progress = true });
             }
@@ -201,17 +219,6 @@ namespace UserAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet]
-        public ActionResult<int> Yey()
-        {
-            try
-            {
-                return Ok(5);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+
     }
 }

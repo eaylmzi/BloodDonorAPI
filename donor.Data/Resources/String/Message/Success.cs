@@ -14,5 +14,6 @@ namespace donor.Data.Resources.String.Message
         public const string DONOR_FOUND = "The donor found!";
         //Donate
         public const string DONATE_SUCCESSFULLY = "The donation has been proceed successfully";
+        public const string DONOR_LIST = "The donor list successfully reached!";
     }
 }

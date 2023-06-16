@@ -1,3 +1,5 @@
+using bloodbank.Data.Repositories.Hospitals;
+using bloodbank.Logic.Logics.Hospitals;
 using donor.Data.Repositories.Branches;
 using donor.Data.Repositories.DonationHistories;
 using donor.Data.Repositories.Donors;
@@ -8,13 +10,14 @@ using donor.Logic.Logics.JoinTable;
 using DonorAPI.Services.Cipher;
 using DonorAPI.Services.Donors;
 using DonorAPI.Services.Jwt;
+using DonorAPI.Services.Location;
 using DonorAPI.Services.Security;
 using location.Data.Repositories.Cities;
 using location.Data.Repositories.Towns;
 using location.logic.Logics.Cities;
 using location.logic.Logics.Towns;
-using LocationAPI.Services.Locations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -29,6 +32,30 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 //JWT
 builder.Services.AddScoped<IJwtService, JwtService>();
+
+/*
+string authenticationProviderKey = "MyJwtProvider";
+SymmetricSecurityKey signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("AppSettings:Token"));
+builder.Services.AddAuthentication(option => option.DefaultAuthenticateScheme = authenticationProviderKey)
+    .AddJwtBearer(authenticationProviderKey, options =>
+    {
+        options.RequireHttpsMetadata = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = signInKey,
+            ValidateIssuer = true,
+            ValidIssuer = "donorIssuer",
+            ValidateAudience = true,
+            ValidAudience = "donorAudience",
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero,
+            RequireExpirationTime = true
+        };
+    });
+
+*/
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -52,6 +79,23 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+builder.Services.AddApiVersioning(opt =>
+{
+    opt.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    opt.AssumeDefaultVersionWhenUnspecified = true;
+    opt.ReportApiVersions = true;
+    opt.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
+                                                    new HeaderApiVersionReader("x-api-version"),
+                                                    new MediaTypeApiVersionReader("x-api-version"));
+});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        });
+});
 //Services dependencies
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<ICipherService, CipherService>();
@@ -63,6 +107,8 @@ builder.Services.AddScoped<IJoinTable, JoinTable>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 
+builder.Services.AddScoped<IHospitalRepository, HospitalRepository>();
+builder.Services.AddScoped<IHospitalLogic, HospitalLogic>();
 builder.Services.AddScoped<ITownRepository, TownRepository>();
 builder.Services.AddScoped<ITownLogic, TownLogic>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
@@ -82,7 +128,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.UseApiVersioning();
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -92,6 +138,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors();
 
 app.Run();

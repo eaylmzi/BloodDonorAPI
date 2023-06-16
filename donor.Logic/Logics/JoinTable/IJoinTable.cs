@@ -9,6 +9,8 @@ namespace donor.Logic.Logics.JoinTable
 {
     public interface IJoinTable
     {
-        public List<Donor> FindDonorByJoinTable(int branchId, string name, string surname,string phoneNumber);
+        public List<Donor> FindDonorByJoinTable(int branchId, string name, string surname);
+        public List<DonationHistory> CheckDonationListByJoinTable();
+        public List<Donor> GetDonorListByJoinTable(int id);
     }
 }

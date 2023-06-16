@@ -20,6 +20,7 @@ namespace bloodbank.Logic.Logics.Hospitals
         public Hospital? GetSingle(int id);
         public Hospital? GetSingleByMethod(int id);
         public Hospital? GetSingleByMethod(string name);
+        public Hospital? GetSingleByMethodGeopoint(int id);
         //public Flight? GetSingleByMethods(int id,string name);
         public List<Hospital>? GetList(int id);
         public Task<Hospital?> UpdateAsync(int id, Hospital updatedEntity);

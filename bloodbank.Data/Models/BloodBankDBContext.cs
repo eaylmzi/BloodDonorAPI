@@ -68,6 +68,11 @@ namespace bloodbank.Data.Models
 
                 entity.Property(e => e.DurationTime)
                     .HasColumnName("duration_time");
+                entity.Property(e => e.City).HasColumnName("city");
+                entity.Property(e => e.Town).HasColumnName("town");
+                entity.Property(e => e.HospitalLongitude).HasColumnName("hospital_longitude");
+                entity.Property(e => e.HospitalLatitude).HasColumnName("hospital_latitude");
+                entity.Property(e => e.HospitalEmail).HasColumnName("hospital_email");
 
             });
 

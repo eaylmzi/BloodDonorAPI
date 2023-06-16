@@ -33,6 +33,8 @@ namespace UserAPI.Services.Jwt
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
 
             var token = new JwtSecurityToken(
+                audience :"donorAudience",
+                issuer:"donorIssuer",
                 claims: claims,
                 expires: DateTime.Now.AddMonths(9),
                 signingCredentials: creds

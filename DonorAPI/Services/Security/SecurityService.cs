@@ -11,17 +11,15 @@ namespace DonorAPI.Services.Security
     {
         private readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
-        private readonly IDonorLogic _donorLogic;
         private readonly IJwtService _jwtService;
         private readonly IUserLogic _userLogic;
 
 
-        public SecurityService(IMapper mapper, IConfiguration configuration, IDonorLogic donorLogic, IJwtService jwtService, IUserLogic userLogic)
+        public SecurityService(IMapper mapper, IConfiguration configuration, IJwtService jwtService, IUserLogic userLogic)
 
         {
             _mapper = mapper;
             _configuration = configuration;
-            _donorLogic = donorLogic;
             _jwtService = jwtService;
             _userLogic = userLogic;
 

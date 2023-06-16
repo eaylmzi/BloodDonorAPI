@@ -18,6 +18,7 @@ namespace donor.Logic.Logics.Brances
         public bool DeleteList(int id);
         public Branch? GetSingle(int id);
         public Branch? GetSingleByMethod(int id);
+        public Branch? GetSingleByMethodGeoPoint(int id);
         public Branch? GetSingleByMethods(int city, int town);
         public List<Branch>? GetList(int id);
         public Task<Branch?> UpdateAsync(int id, Branch updatedEntity);

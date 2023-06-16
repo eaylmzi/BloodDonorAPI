@@ -37,16 +37,15 @@ namespace location.logic.Logics.Geopoints
             bool deleteResult = _repository.DeleteSingleByMethod(filter);
             return deleteResult;
         }
-        /*
-         * istediğin gibi Func parametrelerini değiştirebilirsin
-        public bool DeleteSingleByMethods(int id,string name)
+
+        public Geopoint? GetSingleByMethods(double lat,double longitude)
         {
-            Func<Flight, bool> filter = filter => filter.Id == id;
-            Func<Flight, bool> filter = filter => filter.Name == name;
-            bool deleteResult = _repository.DeleteSingleByMethod(filter);
-            return deleteResult;
+            Func<Geopoint, bool> filter = filter => filter.Latitude == lat;
+            Func<Geopoint, bool> filter2 = filter => filter.Longitude == longitude;
+            Geopoint? result = _repository.GetSingleByMethod(filter, filter2);
+            return result;
         }
-        */
+        
         public bool DeleteList(int id)
         {
             Func<Geopoint, bool> filter = filter => filter.Id == id;

@@ -63,6 +63,12 @@ namespace donor.Logic.Logics.Brances
             Branch? result = _repository.GetSingleByMethod(filter);
             return result;
         }
+        public Branch? GetSingleByMethodGeoPoint(int id)
+        {
+            Func<Branch, bool> filter = filter => filter.GeopointId == id;
+            Branch? result = _repository.GetSingleByMethod(filter);
+            return result;
+        }
         public Branch? GetSingleByMethods(int city, int town)
         {
             Func<Branch, bool> filter = filter => filter.City == city;
